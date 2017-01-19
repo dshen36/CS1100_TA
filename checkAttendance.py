@@ -1,5 +1,5 @@
 __author__ = "Dan Shen"
-__version__ = "1.0"
+__version__ = "1.1"
 
 import csv, sys
 
@@ -11,6 +11,7 @@ month,day = date.strip().split("/")
 try:
 	with open(month + '.' + day + '.csv') as f:
 		students = f.read().splitlines()
+	f.close()
 	attendance = set(students)
 except IOError:
 	print("CSV file not found. Reconfirm the entered date and presence of the CSV files.")
@@ -18,9 +19,14 @@ except IOError:
 	
 # Opening full roster, which is in alphabetical order, and prints out the names of those who attended class
 print 'Students who attended class on ' + date + '\n'
-f = open('Roster.csv')
-roster = csv.reader(f)
+f2 = open('Roster.csv')
+roster = csv.reader(f2)
+studentNames = open('students' + month + '.' + day + '.txt','w')
 
 for GTid,lastName,firstName in roster:
 	if GTid in attendance:
 		print(lastName + ', ' + firstName)
+		studentNames.write("%s, %s\n" %(lastName,firstName))
+
+f2.close()
+studentNames.close()
