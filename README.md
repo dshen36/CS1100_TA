@@ -7,3 +7,9 @@ Scripts that make my life easier as a TA
 - Retrieve the Roster file from the professor and save it as Roster.csv
 - Run the attendance checker in the same directory as the roster and attendance files
 - It will output all names in the file on the terminal
+
+## Instructions
+- python checkAttendance.py
+  - It will prompt you for date of format {date}/{month}
+- requires a roster from the professor as a csv.
+  - Name it as roster.csv and keep it in same directory as checkAttendance.py
